@@ -154,6 +154,9 @@ void *onas_fan_th(void *arg)
     if (optget(tharg->opts, "OnAccessPrevention")->enabled && !optget(tharg->opts, "OnAccessMountPath")->enabled) {
         logg("ScanOnAccess: preventing access attempts on malicious files.\n");
         fan_mask |= FAN_ACCESS_PERM | FAN_OPEN_PERM;
+    } else if ( optget(tharg->opts, "OnWriteClose")->enabled ) {
+	   logg("OnWriteClose: notifying only upon close of a writable file\n");
+           fan_mask = FAN_CLOSE_WRITE;
     } else {
         logg("ScanOnAccess: notifying only for access attempts.\n");
         fan_mask |= FAN_ACCESS | FAN_OPEN;

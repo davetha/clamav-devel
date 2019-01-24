@@ -420,6 +420,8 @@ const struct clam_option __clam_options[] = {
 
     {"OnAccessExtraScanning", NULL, 0, CLOPT_TYPE_BOOL, MATCH_BOOL, 0, NULL, 0, OPT_CLAMD, "Enables extra scanning and notification after catching certain inotify events. Only works with the DDD system enabled.", "yes"},
 
+    {"OnWriteClose", NULL, 0, CLOPT_TYPE_BOOL, MATCH_BOOL, 0, NULL, 0, OPT_CLAMD, "This option changes the behavior of fanotify ScanOnAccess to only scan when a file opened for writing is closed. Good for environments with a very large read/write ratio.", "yes" },
+
     /* FIXME: mark these as private and don't output into clamd.conf/man */
     {"DevACOnly", "dev-ac-only", 0, CLOPT_TYPE_BOOL, MATCH_BOOL, -1, NULL, FLAG_HIDDEN, OPT_CLAMD | OPT_CLAMSCAN, "", ""},
 
